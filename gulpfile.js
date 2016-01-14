@@ -21,8 +21,9 @@ var paths = {
 
 elixir(function(mix) {
     mix.scripts([
-        paths.jquery  + 'dist/jquery.min.js',
-        paths.angular + 'angular.min.js'
+        paths.jquery    + 'dist/jquery.min.js',
+        paths.angular   + 'angular.min.js',
+        paths.bootstrap + 'js/dropdown.js'
     ], 'public/js/app.js')
 
 
