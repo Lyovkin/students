@@ -42,15 +42,27 @@
                             <p class="gender control-label" style="text-align: center;">Gender</p>
                         </div>
 
-                        <div class="col-md-5" style="padding-bottom: 15px; ">
+                        <div class="col-md-5 {{ $errors->has('gender') ? 'has-error' : '' }}" style="padding-bottom: 15px; ">
                             <label class="checkbox-inline">
                                 <input type="checkbox" name="gender" value="male">
                                 Male
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                             </label>
 
                             <label class="checkbox-inline">
                                 <input type="checkbox" name="gender" value="female">
                                 Female
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                             </label>
                         </div>
 
