@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Models\Student;
+use Illuminate\Http\Request;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -49,8 +50,12 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'firstname' => 'required|max:25',
+            'lastname' => 'required|max:25',
+            'gender' => 'required|max:10|min:4',
+            'group' => 'required|max:10',
+            'phone' => 'required|min:10|max:10',
+            'email' => 'required|email|max:255|unique:students',
             'password' => 'required|confirmed|min:6',
         ]);
     }
@@ -59,12 +64,18 @@ class AuthController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return User
+     * @return Student
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return Student::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'gender' => $data['gender'],
+            'group' => $data['group'],
+            //'marks' => $data['marks'],
+            //'birthday' => $data['birthday'],
+            'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
